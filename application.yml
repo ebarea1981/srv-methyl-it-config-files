@@ -14,6 +14,8 @@ server:
 # Logging
 # logging.level.org.springframework: INFO
 logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%X{traceId:-},%X{spanId:-}] ${LOG_LEVEL_PATTERN:-%5p} %m%n"
   level:
     org:
       springframework: INFO
@@ -21,21 +23,14 @@ logging:
 # Metrics
 management:
   endpoint:
-    metrics:
+    info:
       enabled: true
-    prometheus:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-  metrics:
-    export:
-      prometheus:
-        enabled: true
-  info:
-    env:
-      enabled: true
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
 
 # Identification
 info:
@@ -55,5 +50,5 @@ eureka:
 
 # bestplane: '{cipher}af3ac2cda0bc35f0c55f76f5e2d57d11b8e93078790662af40918e2e61554146'
 
-avwx:
-  token: '{cipher}a55eebf22029f129c7aab38026ea536f4b4f2199a1d176215ec81f1b12a791afa4fce34cc08668090688654be307322f968717ec09728e842537f403c05b5b80'
+#avwx:
+#  token: '{cipher}a55eebf22029f129c7aab38026ea536f4b4f2199a1d176215ec81f1b12a791afa4fce34cc08668090688654be307322f968717ec09728e842537f403c05b5b80'
