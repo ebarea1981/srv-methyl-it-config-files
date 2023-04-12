@@ -5,3 +5,16 @@ management:
   zipkin:
     tracing:
       endpoint: http://zipkin:9411/api/v2/spans
+
+srv-worker:
+  http-client:
+    read-timeout: 3000
+    write-timeout: 3000
+    connect-timeout: 3000
+    response-timeout: 3000
+  retry:
+    max-retry: 3
+    retry-interval: 3000
+  urls:
+    base: http://srv-worker:8000/
+    ping: /ping
