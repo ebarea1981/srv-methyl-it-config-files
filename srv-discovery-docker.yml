@@ -1,16 +1,7 @@
 server:
   port: 8761
 
-# COMMON APPLICATION PROPERTIES
 management:
   zipkin:
     tracing:
       endpoint: http://zipkin:9411/api/v2/spans
-
-# Eureka
-eureka:
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    healthcheck:
-      enabled: true
