@@ -1,3 +1,6 @@
+server:
+  port: 8761
+
 # COMMON APPLICATION PROPERTIES
 management:
   zipkin:
@@ -7,5 +10,7 @@ management:
 # Eureka
 eureka:
   client:
+    registerWithEureka: false
+    fetchRegistry: false
     healthcheck:
       enabled: true
