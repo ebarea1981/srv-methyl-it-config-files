@@ -21,6 +21,10 @@ spring:
         - Path=/worker/**
         filters:
         - StripPrefix=1
+      - id: srv-worker-rstudio
+        uri: http://srv-worker:8787/
+        predicates:
+          - Path=/rstudio
 logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%X{traceId:-},%X{spanId:-}] ${LOG_LEVEL_PATTERN:-%5p} %m%n"
