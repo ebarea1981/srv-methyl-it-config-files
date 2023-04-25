@@ -27,6 +27,15 @@ spring:
           - Path=/rstudio/**
         filters:
           - StripPrefix=1
+          #- RewritePath=/rstudio/(?<RID>.*), /$\{RID}
+      - id: rstudio-auth-sign-in
+        predicates:
+          - Path=/auth-sign-in
+        uri: http://srv-worker:8787
+      - id: rstudio-auth-sign-out
+        predicates:
+          - Path=/auth-sign-out
+        uri: http://srv-worker:8787
 logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%X{traceId:-},%X{spanId:-}] ${LOG_LEVEL_PATTERN:-%5p} %m%n"
