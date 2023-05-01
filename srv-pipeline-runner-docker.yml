@@ -15,6 +15,5 @@ srv-worker:
   retry:
     max-retry: 3
     retry-interval: 3000
-  urls:
-    base: http://srv-worker:8000/
-    ping: /ping
+  url-base: http://srv-worke:8000/
+

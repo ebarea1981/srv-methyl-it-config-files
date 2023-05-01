@@ -28,6 +28,9 @@ srv-worker:
   retry:
     max-retry: 3
     retry-interval: 3000
-  urls:
-    base: http://localhost:8000/
-    ping: /ping
+  #######################################
+  # SRV-WORKER URLs
+  url-base: http://localhost:8000/
+  url-ping: /ping
+  url-load-rdata: /load_rdata
+  # END (SRV-WORKER URLs) ###############
