@@ -9,12 +9,13 @@ spring:
           enabled: false
           lowerCaseServiceId: true
       routes:
-      - id: srv-pipeline-runner
+      - id: api-srv-pipeline-runner
         uri: lb://srv-pipeline-runner
         predicates:
-        - Path=/runner/**
+        - Path=/api/**
         filters:
-          - StripPrefix=1
+          #- StripPrefix=1
+          - RewritePath=/api/(?<RID>.*), /api/v1/$\{RID}
       - id: srv-worker
         uri: lb://srv-worker/
         predicates:
