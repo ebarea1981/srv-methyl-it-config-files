@@ -33,4 +33,5 @@ srv-worker:
   url-base: http://localhost:8000/
   url-ping: /ping
   url-load-rdata: /load_rdata
+  url-get-geo-supp-files: /get-geo-supp-files
   # END (SRV-WORKER URLs) ###############
