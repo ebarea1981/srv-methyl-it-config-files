@@ -34,4 +34,5 @@ srv-worker:
   url-ping: /ping
   url-load-rdata: /load_rdata
   url-get-geo-supp-files: /get-geo-supp-files
+  url-read-counts-2-granges-list: /read-counts-2-granges-list
   # END (SRV-WORKER URLs) ###############
