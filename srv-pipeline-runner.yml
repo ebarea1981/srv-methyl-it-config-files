@@ -17,7 +17,10 @@ management:
 
 springdoc:
   swagger-ui:
-    path: /api/doc
+    path: /api/v1/doc
+  # Paths to include
+  pathsToMatch: /api/v1/**
+  packagesToScan: edu.psu.methylit.api.controller
 
 srv-worker:
   http-client:
