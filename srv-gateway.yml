@@ -9,6 +9,12 @@ spring:
           enabled: false
           lowerCaseServiceId: true
       routes:
+      - id: api-methyl-it-swagger
+        uri: lb://srv-pipeline-runner
+        predicates:
+          - Path=/api/v1/**
+        filters:
+          - RewritePath=/api/v1/(?<RID>.*), /api/v1/$\{RID}
       - id: api-methyl-it
         uri: lb://srv-pipeline-runner
         predicates:
