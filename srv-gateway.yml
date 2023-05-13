@@ -21,7 +21,7 @@ spring:
           - Path=/api/**
         filters:
           - RewritePath=/api/(?<RID>.*), /api/v1/$\{RID}
-      - id: srv-pipeline-runner
+      - id: runner-service
         uri: lb://srv-pipeline-runner
         predicates:
         - Path=/runner/**
@@ -48,6 +48,19 @@ spring:
         predicates:
           - Path=/auth-sign-out
         uri: http://srv-worker:8787
+      - id: openapi
+        uri: http://localhost:${server.port}
+        predicates:
+          - Path=/v3/api-docs/**
+        filters:
+          - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: runner
+        url: /v3/api-docs/runner
+
 logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%X{traceId:-},%X{spanId:-}] ${LOG_LEVEL_PATTERN:-%5p} %m%n"
