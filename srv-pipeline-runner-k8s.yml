@@ -1,6 +1,3 @@
-server:
-  port: 8080
-
 management:
   zipkin:
     tracing:
@@ -8,7 +5,3 @@ management:
 
 srv-worker:
   url-base: http://srv-worker:8000/
-
-eureka:
-  client:
-    enabled: false
