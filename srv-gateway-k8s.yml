@@ -1,0 +1,59 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+      routes:
+      - id: api-methyl-it-swagger
+        uri: http://srv-pipeline-runner
+        predicates:
+          - Path=/api/v1/**
+        filters:
+          - RewritePath=/api/v1/(?<RID>.*), /api/v1/$\{RID}
+      - id: api-methyl-it
+        uri: http://srv-pipeline-runner
+        predicates:
+          - Path=/api/**
+        filters:
+          - RewritePath=/api/(?<RID>.*), /api/v1/$\{RID}
+      - id: runner-service
+        uri: http://srv-pipeline-runner
+        predicates:
+        - Path=/runner/**
+        filters:
+          - StripPrefix=1
+      - id: srv-worker
+        uri: http://srv-worker/
+        predicates:
+        - Path=/worker/**
+        filters:
+        - StripPrefix=1
+      - id: openapi
+        uri: http://localhost:${server.port}
+        predicates:
+          - Path=/v3/api-docs/**
+        filters:
+          - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: runner
+        url: /v3/api-docs/runner
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%X{traceId:-},%X{spanId:-}] ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
