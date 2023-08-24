@@ -39,4 +39,5 @@ srv-worker:
   url-get-geo-supp-files: /get-geo-supp-files
   url-read-counts-2-granges-list: /read-counts-2-granges-list
   url-pool-from-gr-list: /pool-from-gr-list
+  url-estimate-divergence: /estimate-divergence
   # END (SRV-WORKER URLs) ###############
