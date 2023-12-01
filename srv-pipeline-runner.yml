@@ -45,5 +45,4 @@ srv-worker:
 aws:
   aws-region: us-east-1
   methylit-job-queue: methylit-default-queue
-  methylit-job-definition: methylit-job:1
-  read-counts-job-definition: methylit-readcounts-job:2
+  methylit-job-definition: methylit-job-test16:2
